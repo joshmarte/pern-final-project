@@ -1,7 +1,8 @@
-# PERN Final Project Template
+## Links
 
-- select `use this template`
-- clone this repo
+- frontend
+
+- backend
 
 ## Getting Started
 
