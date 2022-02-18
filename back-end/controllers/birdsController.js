@@ -68,7 +68,7 @@ birds.delete("/:id", async (req, res) => {
 birds.put("/:id", async (req, res) => {
   const { id } = req.params;
   const updatedBirds = await updateBird(id, req.body);
-  res.status(200).json(updatedSong);
+  res.status(200).json(updatedBirds);
 });
 
 // EXPORTS
