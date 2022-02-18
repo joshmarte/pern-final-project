@@ -1,11 +1,18 @@
-DROP DATABASE IF EXISTS cta_dev;
-CREATE DATABASE cta_dev;
+DROP DATABASE IF EXISTS birds_dev;
+CREATE DATABASE birds_dev;
 
-\c cta_dev;
+\c birds_dev;
 
-DROP TABLE IF EXISTS test;
+DROP TABLE IF EXISTS birds;
 
-CREATE TABLE test (
+CREATE TABLE birds (
     id SERIAL PRIMARY KEY, 
-    name TEXT
+    common_name VARCHAR,
+    scientific_name TEXT,
+    description TEXT,
+    rating INTEGER CHECK(rating >= 0 AND rating <=5),
+    price NUMERIC,
+    featured BOOLEAN,
+    image TEXT,
+    audio TEXT
 );
