@@ -10,3 +10,4 @@ INSERT INTO birds (common_name, scientific_name, description, rating, price, fea
 -- \i ./back-end/db/prod_schema.sql
 -- \i ./back-end/db/prod_seed.sql
 -- https://jm-cta-be.herokuapp.com/
+-- git subtree push --prefix back-end heroku main
