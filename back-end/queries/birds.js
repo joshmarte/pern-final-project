@@ -51,7 +51,7 @@ const deleteBird = async (id) => {
       "DELETE FROM birds WHERE id=$1 RETURNING *",
       id
     );
-    return deletedBrid;
+    return deletedBird;
   } catch (error) {
     return error;
   }

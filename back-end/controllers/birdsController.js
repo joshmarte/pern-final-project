@@ -57,6 +57,7 @@ birds.post("/", async (req, res) => {
 birds.delete("/:id", async (req, res) => {
   const { id } = req.params;
   const deletedBird = await deleteBird(id);
+  console.log(deletedBird);
   if (deletedBird.id) {
     res.status(200).json(deletedBird);
   } else {
