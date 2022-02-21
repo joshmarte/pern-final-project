@@ -1,4 +1,4 @@
-import BridEdit from "../Components/BridEdit.js";
+import BridEdit from "../Components/BirdEdit";
 
 function Edit() {
   return (

@@ -8,7 +8,7 @@ function BirdDetails() {
   let { id } = useParams();
   let navigate = useNavigate();
 
-  useEffect(async () => {
+  useEffect(() => {
     // axios
     //   .get(`${API}/birds/${id}`)
     //   .then((res) => {
@@ -17,13 +17,16 @@ function BirdDetails() {
     //   .catch((err) => {
     //     console.log(err);
     //   });
-    try {
-      let response = await fetch(`${API}/birds/${id}`);
-      let apiData = await response.json();
-      setBird(apiData);
-    } catch (error) {
-      console.log(error);
+    async function getData() {
+      try {
+        let response = await fetch(`${API}/birds/${id}`);
+        let apiData = await response.json();
+        setBird(apiData);
+      } catch (error) {
+        console.log(error);
+      }
     }
+    getData();
   }, [id]);
 
   const handleDelete = async () => {
@@ -42,36 +45,37 @@ function BirdDetails() {
   };
 
   return (
-    <article>
-      <aside>
-        <h4>Bird Card</h4>
-      </aside>
-      <div className="bird">
-        <h5>{bird.common_name}</h5>
-        <h6>Latin: {bird.scientific_name}</h6>
-        <p>Desc: {bird.description}</p>
-        <h6>Rating: {bird.rating}</h6>
-        <h6>Price: {bird.price}</h6>
-        <h6>Featured: {bird.featured ? "True" : "False"}</h6>
-        <img src={bird.image} alt={bird.name} width="200px" />
-        <audio src={bird.audio} />
-      </div>
+    <div>
+      <article>
+        <div className="bird-details">
+          <h3>{bird.common_name}</h3>
+          <h4>Latin: {bird.scientific_name}</h4>
+          <div className="img-desc">
+            <img src={bird.image} alt={bird.name} width="200px" />
+            <span>Desc: {bird.description}</span>
+          </div>
+          <h4>Rating: {bird.rating}</h4>
+          <h4>Price: {bird.price}</h4>
+          <h4>Featured: {bird.featured ? "True" : "False"}</h4>
+          <audio src={bird.audio} />
+        </div>
+      </article>
       <div className="showNavigation">
-        <div>
+        <span>
           <Link to="/birds">
             <button>Back</button>
           </Link>
-        </div>
-        <div>
+        </span>
+        <span>
           <button onClick={handleDelete}>Delete</button>
-        </div>
-        <div>
+        </span>
+        <span>
           <Link to={`/birds/${id}/edit`}>
             <button>Edit</button>
           </Link>
-        </div>
+        </span>
       </div>
-    </article>
+    </div>
   );
 }
 

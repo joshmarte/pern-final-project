@@ -1,55 +1,50 @@
-import { useState, useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-
-const API = process.env.REACT_APP_API_URL;
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function BirdEditForm() {
-  let { id } = useParams();
-  const navigate = useNavigate();
-  console.log(id);
-
   const [bird, setBird] = useState({
     common_name: "",
     scientific_name: "",
     description: "",
-    rating: 0,
+    rating: 3,
     price: 0,
     featured: false,
     image: "",
     audio: "",
   });
 
+  const API = process.env.REACT_APP_API_URL;
+  const navigate = useNavigate();
+
   const handleTextChange = (event) => {
     setBird({ ...bird, [event.target.id]: event.target.value });
   };
 
   const handleCheckboxChange = () => {
-    setBird({ ...bird, isFavorite: !bird.isFavorite });
+    setBird({ ...bird, featured: !bird.featured });
   };
-
-  useEffect(() => {
-    axios
-      .get(`${API}/birds/${id}`)
-      .then((response) => {
-        setBird(response.data);
-      })
-      .catch((e) => console.error(e));
-  }, [id]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios
-      .put(`${API}/birds/${id}`, bird)
-      .then((response) => {
-        setBird(response.data);
-        navigate(`/birds/${id}`);
-      })
-      .catch((c) => console.warn("catch", c));
+
+    async function postData() {
+      const response = await fetch(`${API}/birds`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(bird),
+      });
+      const content = await response.json();
+    }
+    postData();
+
+    navigate("/birds");
   };
 
   return (
-    <div className="Edit">
+    <div className="New">
       <form onSubmit={handleSubmit}>
         <label htmlFor="common_name">Common Name: </label>
         <input
@@ -104,12 +99,26 @@ function BirdEditForm() {
           onChange={handleCheckboxChange}
           checked={bird.featured}
         />
+        <label htmlFor="image">Image: </label>
+        <input
+          id="image"
+          value={bird.image}
+          type="text"
+          onChange={handleTextChange}
+          placeholder="Image of Bird"
+          required
+        />
+        <label htmlFor="audio">Audio: </label>
+        <input
+          id="audio"
+          value={bird.audio}
+          type="text"
+          onChange={handleTextChange}
+          placeholder="Bird Audio"
+          required
+        />
         <br />
-
         <input type="submit" id="submit" />
-        <Link to={`/birds/${id}`}>
-          <button>Nevermind!</button>
-        </Link>
       </form>
     </div>
   );

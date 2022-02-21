@@ -5,8 +5,8 @@ import NavBar from "./Components/Nav";
 // PAGES
 import Index from "./Pages/Index";
 import Show from "./Pages/Show";
-// import Edit from "./Pages/Edit";
-// import New from "./Pages/New";
+import Edit from "./Pages/Edit";
+import New from "./Pages/New";
 import Home from "./Pages/Home";
 
 function App() {
@@ -16,9 +16,9 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/birds" element={<Index />} />
-        {/* <Route path="/birds/new" element={<New />} /> */}
+        <Route path="/birds/new" element={<New />} />
         <Route path="/birds/:id" element={<Show />} />
-        {/* <Route path="/birds/:id/edit" element={<Edit />} /> */}
+        <Route path="/birds/:id/edit" element={<Edit />} />
       </Routes>
     </main>
   );

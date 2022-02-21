@@ -19,7 +19,7 @@ export default function Birds() {
   }, []);
   return (
     <div className="birds">
-      <article>
+      <article className="allBirds">
         {birds.map((bird) => {
           return <Bird key={bird.id} bird={bird} />;
         })}
