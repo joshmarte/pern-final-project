@@ -8,11 +8,12 @@ import Show from "./Pages/Show";
 import Edit from "./Pages/Edit";
 import New from "./Pages/New";
 import Home from "./Pages/Home";
+import NavBoot from "./Components/NavBoot";
 
 function App() {
   return (
     <main className="App">
-      <NavBar />
+      <NavBoot />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/birds" element={<Index />} />

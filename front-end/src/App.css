@@ -29,6 +29,9 @@ nav button {
   border: 1px solid white;
   color: rgb(235, 94, 40);
 }
+h2 {
+  text-align: center;
+}
 
 h4 {
   margin: 0;
@@ -228,4 +231,8 @@ textarea {
 
 .product-price-btn button:hover {
   background-color: #79b0a1;
+}
+
+.navbar > .container-fluid {
+  gap: 80%;
 }
