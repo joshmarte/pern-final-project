@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Bird({ bird }) {
     return (
-        <div className="card" style={{ width: "18rem" }}>
+        <div className="card border" style={{ width: "18rem" }}>
             <img src={bird.image} className="card-img-top" alt={bird.name} />
             <div className="card-body">
                 <h5 className="card-title">{bird.common_name}</h5>

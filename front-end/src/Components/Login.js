@@ -23,9 +23,12 @@ export default function Login() {
         axios
             .post(`${API}/login`, user)
             .then((res) => {
-                console.log(res);
+                console.log(res.data);
                 if (res.data.message === "success") {
+                    localStorage.setItem("name", res.data.data.name);
                     navigate("/");
+                } else {
+                    setError(res);
                 }
             })
             .catch((error) => {

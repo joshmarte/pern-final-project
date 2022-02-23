@@ -1,5 +1,6 @@
 body {
     font-family: "Overlock";
+    background-color: antiquewhite;
 }
 
 h1 {
@@ -11,24 +12,6 @@ main {
     margin: auto;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(37, 36, 34);
-    color: rgb(235, 94, 40);
-    padding: 15px 45px;
-    margin-bottom: 15px;
-}
-
-nav a {
-    text-decoration: none;
-    color: rgb(235, 94, 40);
-}
-nav button {
-    border: 1px solid white;
-    color: rgb(235, 94, 40);
-}
 h2 {
     text-align: center;
 }
@@ -41,7 +24,7 @@ h4 {
 
 .allBirds {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 2fr 2fr;
     justify-items: center;
     grid-gap: 20px;
 }
@@ -117,4 +100,8 @@ textarea {
 
 .navbar > .container-fluid {
     gap: 60%;
+}
+
+.card {
+    align-items: center;
 }

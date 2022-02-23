@@ -1,3 +1,5 @@
 export default function Home() {
-  return <h1>Welcome to Bird Cards</h1>;
+    const name = localStorage.getItem("name");
+    console.log(localStorage);
+    return <h1>Welcome {name} to Bird Cards</h1>;
 }
