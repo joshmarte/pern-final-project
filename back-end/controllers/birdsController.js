@@ -1,6 +1,5 @@
 // DEPENDENCIES
 const express = require("express");
-const db = require("../db/dbConfig");
 const birds = express.Router();
 
 // VALIDATION DEPENDENCIES

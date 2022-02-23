@@ -9,6 +9,8 @@ import Edit from "./Pages/Edit";
 import New from "./Pages/New";
 import Home from "./Pages/Home";
 import NavBoot from "./Components/NavBoot";
+import SignUp from "./Components/SignUp";
+import Login from "./Components/Login";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path="/birds/new" element={<New />} />
         <Route path="/birds/:id" element={<Show />} />
         <Route path="/birds/:id/edit" element={<Edit />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </main>
   );

@@ -1,5 +1,4 @@
 // DEPENDENCIES
-const { any } = require("../db/dbConfig");
 const db = require("../db/dbConfig");
 
 // GET ALL SONGS
