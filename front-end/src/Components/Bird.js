@@ -1,6 +1,31 @@
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+const useAudio = (url) => {
+    const [audio] = useState(new Audio(url));
+    const [playing, setPlaying] = useState(false);
+
+    const toggle = () => setPlaying(!playing);
+
+    useEffect(() => {
+        playing ? audio.play() : audio.pause();
+    }, [playing]);
+
+    useEffect(() => {
+        audio.addEventListener("ended", () => setPlaying(false));
+        return () => {
+            audio.removeEventListener("ended", () => setPlaying(false));
+        };
+    }, []);
+
+    return [playing, toggle];
+};
 
 export default function Bird({ bird }) {
+    // const handleClick = () => {
+    //     let audio = new Audio(bird.audio);
+    //     audio.pause();
+    //     audio.play();
+    // };
+    const [playing, toggle] = useAudio(bird.audio);
     return (
         <div className="card border" style={{ width: "18rem" }}>
             <img src={bird.image} className="card-img-top" alt={bird.name} />
@@ -10,6 +35,11 @@ export default function Bird({ bird }) {
                 <a href={`/birds/${bird.id}`} className="btn btn-success">
                     Buy Now
                 </a>
+                <div className="bird-audio-item">
+                    <button className="bird-player-button" onClick={toggle}>
+                        <img src="https://www.audubon.org/sites/all/themes/custom/nas/img/native-player/play.svg" />
+                    </button>
+                </div>
             </div>
         </div>
     );
